@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Lowongan - MAGANGIN</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">    <!-- Anime.js CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        /* Animation Classes */
+        .animate-detail {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+        }
+
+        .detail-card {
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+            border-radius: 15px;
+            color: white;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .tag-blue {
+            background-color: #3B82F6;
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #7C3AED;">
+            <div class="container">
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="home.html" onclick="pageTransition('home.html'); return false;">
+                    <img src="assets/images/logo.png" alt="Logo" class="me-2" style="height: 30px;">
+                    MAGANGIN
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item me-3">
+                            <a class="nav-link text-white fw-bold" href="home.html" onclick="pageTransition('home.html'); return false;">
+                                Kembali ke Home
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Detail Content -->
+        <div class="container-fluid" style="background-color: #f5f5f5; min-height: calc(100vh - 120px);">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="detail-card animate-detail">
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="company-logo">
+                                    <i class="bi bi-building text-primary fs-4"></i>
+                                </div>
+                                <div>
+                                    <h2 class="mb-2 fw-bold">Programmer</h2>
+                                    <h5 class="text-warning mb-0">PT Pertamina (Persero)</h5>
+                                    <p class="mb-0 text-light">Gowongan, Kec. Jetis, Kota Yogyakarta</p>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <span class="tag tag-blue">Perusahaan Premium</span>
+                                <span class="tag">Paruh waktu</span>
+                                <span class="tag">1 - 3 Tahun</span>
+                                <span class="tag">Minimal Diploma (D3)</span>
+                                <span class="tag">Back-end Developer</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="fw-bold text-warning mb-3">Deskripsi Pekerjaan</h5>
+                                <p>Kami mencari seorang programmer yang berpengalaman untuk bergabung dengan tim IT kami. Kandidat yang ideal memiliki kemampuan dalam pengembangan back-end dan dapat bekerja dalam tim.</p>
+                                
+                                <h6 class="fw-bold mt-4 mb-2">Kualifikasi:</h6>
+                                <ul>
+                                    <li>Minimal pendidikan Diploma (D3) Teknik Informatika atau sejenisnya</li>
+                                    <li>Pengalaman 1-3 tahun dalam back-end development</li>
+                                    <li>Menguasai PHP, MySQL, dan framework seperti Laravel</li>
+                                    <li>Memahami REST API dan sistem database</li>
+                                    <li>Kemampuan problem solving yang baik</li>
+                                </ul>
+
+                                <h6 class="fw-bold mt-4 mb-2">Fasilitas:</h6>
+                                <ul>
+                                    <li>Gaji kompetitif Rp 5,000,000/bulan</li>
+                                    <li>BPJS Kesehatan dan Ketenagakerjaan</li>
+                                    <li>Pelatihan dan sertifikasi</li>
+                                    <li>Lingkungan kerja yang nyaman</li>
+                                </ul>
+                            </div>
+
+                            <div class="text-center">
+                                <button class="btn btn-warning btn-lg px-5 py-3 fw-bold text-dark" style="border-radius: 25px;" onclick="pageTransition('info-lamaran.html'); return false;">
+                                    <i class="bi bi-send-fill me-2"></i>
+                                    LAMAR SEKARANG
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="detail-card animate-detail">
+                            <h5 class="fw-bold text-warning mb-3">Informasi Perusahaan</h5>
+                            <div class="mb-3">
+                                <strong>Nama:</strong><br>
+                                PT Pertamina (Persero)
+                            </div>
+                            <div class="mb-3">
+                                <strong>Industri:</strong><br>
+                                Minyak dan Gas
+                            </div>
+                            <div class="mb-3">
+                                <strong>Lokasi:</strong><br>
+                                Gowongan, Kec. Jetis, Kota Yogyakarta
+                            </div>
+                            <div class="mb-3">
+                                <strong>Website:</strong><br>
+                                <a href="#" class="text-warning">www.pertamina.com</a>
+                            </div>
+                            <div class="mb-3">
+                                <strong>Jumlah Karyawan:</strong><br>
+                                10,000+ karyawan
+                            </div>
+                        </div>
+                    </div>                </div>
+            </div>
+        </div>
+
+    <!-- Footer -->
+    <footer class="hero-section text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="mb-1">Aplikasi ini khusus untuk mahasiswa aktif D3TI Universitas AMIKOM Yogyakarta.</p>
+                    <p class="mb-0">butuh bantuan? <a href="mailto:magangd3ti@amikom.ac.id" class="text-warning text-decoration-none">magangd3ti@amikom.ac.id</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Anime.js Animations -->
+    <script>
+        // Page ready animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate detail cards on page load
+            anime({
+                targets: '.animate-detail',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 700,
+                delay: anime.stagger(200),
+                easing: 'easeOutQuad'
+            });
+        });
+
+        // Page transition function for links
+        function pageTransition(url) {
+            anime({
+                targets: 'body',
+                opacity: 0,
+                duration: 300,
+                easing: 'easeOutQuad',
+                complete: function() {
+                    window.location.href = url;
+                }
+            });
+        }
+
+        // Add hover animations to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                anime({
+                    targets: this,
+                    scale: 1.05,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+
+            button.addEventListener('mouseleave', function() {
+                anime({
+                    targets: this,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                anime({
+                    targets: this,
+                    scale: [1, 0.95, 1],
+                    duration: 150,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

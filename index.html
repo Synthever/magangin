@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAGANGIN - Platform Magang Digital</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Anime.js CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .loading-dot {
+            width: 12px;
+            height: 12px;
+            background: #F59E0B;
+            border-radius: 50%;
+        }
+
+        .page-transition {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animation Classes */
+        .animate-hero {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .animate-feature {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .gradient-purple {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+        }
+
+        .gradient-orange {
+            background: linear-gradient(135deg, #F59E0B 0%, #EAB308 100%);
+        }
+
+        .navbar-brand img {
+            height: 30px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo animate-float">
+                <img src="assets/images/logo.png" alt="Logo" style="width: 40px; height: 40px;">
+            </div>
+            <h4 class="fw-bold mb-3">MAGANGIN</h4>
+            <p>Platform Magang Digital</p>
+            <div class="loading-dots">
+                <div class="loading-dot" id="dot1"></div>
+                <div class="loading-dot" id="dot2"></div>
+                <div class="loading-dot" id="dot3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div id="mainContent" class="page-transition">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-lg-top" style="background-color: #7C3AED;">
+            <div class="container">
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                    <img src="assets/images/logo.png" alt="Logo" class="me-2">
+                    MAGANGIN
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item me-3">
+                            <a class="nav-link text-white fw-bold" href="index.html">
+                                HOME
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-bold active" href="login.html">
+                                LOGIN
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section text-white py-5" id="hero">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <div class="bg-dark bg-opacity-75 rounded-4 p-4 mb-5 animate-hero">
+                        <h1 class="fw-bold mb-3">
+                            <span class="text-warning">Magangin</span> adalah platform resmi magang untuk
+                            <span class="text-warning">Mahasiswa D3TI AMIKOM</span>.
+                            Dibuat untuk <span class="text-warning">mempermudah</span> proses pencarian,
+                            pengajuan, dan pelacakan status magang <span class="text-warning">secara digital</span>.
+                            Dirancang dengan <span class="text-warning">tampilan</span> yang modern dan user-friendly.
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card rounded-4 p-4 text-center h-100 animate-feature">
+                        <div class="gradient-orange rounded-3 p-3 d-inline-block mb-3">
+                            <i class="bi bi-clock-fill fs-2 text-white"></i>
+                        </div>
+                        <h5 class="fw-bold text-warning mb-3">Cepat & Efisien</h5>
+                        <p class="mb-0">Proses pengajuan magang maksimal 4 hari kerja dengan status secara real time.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card rounded-4 p-4 text-center h-100 animate-feature">
+                        <div class="gradient-orange rounded-3 p-3 d-inline-block mb-3">
+                            <i class="bi bi-geo-alt-fill fs-2 text-white"></i>
+                        </div>
+                        <h5 class="fw-bold text-warning mb-3">Rekomendasi Tepat</h5>
+                        <p class="mb-0">Sistem menyediakan tempat magang sesuai bidang dan minatmu.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card rounded-4 p-4 text-center h-100 animate-feature">
+                        <div class="gradient-orange rounded-3 p-3 d-inline-block mb-3">
+                            <i class="bi bi-bell-fill fs-2 text-white"></i>
+                        </div>
+                        <h5 class="fw-bold text-warning mb-3">Notifikasi Otomatis</h5>
+                        <p class="mb-0">Dapatkan info penting langsung ke email mahasiswa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="py-5" id="integrated-system">
+            <div class="container">
+                <div class="hero-section rounded-4 p-5 text-white text-center">
+                    <h2 class="section-title mb-4">
+                        <i class="bi bi-search text-warning"></i> Temukan dan
+                        <span class="text-warning">Ajukan</span> Magangmu Lebih Mudah<br>
+                        Sistem Terintegrasi untuk <span class="text-warning">Mahasiswa D3TI AMIKOM</span>
+                    </h2>
+                    <p class="lead">
+                        Dapatkan <span class="text-warning">akses</span> ke tempat magang terpercaya, ajukan hanya
+                        dalam beberapa klik, dan <span class="text-warning">pantau</span> prosesmu langsung dari
+                        dashboard. Semua serba digital, <span class="text-warning">tanpa ribet</span>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <div class="container text-center">
+                <img src="assets/images/news1-big.png" alt="Hero Image" class="img-fluid rounded-4 shadow-lg">
+            </div>
+
+            <div class="container mt-4">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <img src="assets/images/news1-small.png" alt="News Image 1" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/images/news2-small.png" alt="News Image 2" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/images/news3-small.png" alt="News Image 3" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mengapa Amikom dan Berita Utama -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row text-center mb-5">
+                    <div class="col-md-6">
+                        <img src="assets/images/mengapa-amikom.png" alt="Amikom Logo" class="img-fluid rounded-4 mb-3 shadow-lg">
+                    </div>
+                    <div class="col-md-4 ms-auto">
+                        <h2 class="section-title mb-4">Berita Utama</h2>
+                        <img src="assets/images/berita-utama-1.png" alt="Berita Utama" class="img-fluid rounded-4 mb-3 shadow-lg">
+                        <p class="lead">IEEE Student Branch AMIKOM Raih Juara 3 IEEE Student Branch Leaders Talk V2.0</p>
+                        <p class="text-muted">17 May 2025</p>
+
+                        <img src="assets/images/berita-utama-2.png" alt="Berita Utama" class="img-fluid rounded-4 mb-3 shadow-lg">
+                        <p class="lead">Perjalanan Mukhlis Dalam Japan and China (APJC) Cisco NetAcad Riders 2025 Round 2</p>
+                        <p class="text-muted">16 May 2025</p>
+
+                        <img src="assets/images/berita-utama-3.png" alt="Berita Utama" class="img-fluid rounded-4 mb-3 shadow-lg">
+                        <p class="lead">Sosialisasi Program Kreativitas Mahasiswa (PKM) 2025</p>
+                        <p class="text-muted">15 May 2025</p>
+                    </div>                </div>
+            </div>
+        </section>
+    </div> <!-- End Main Content Wrapper -->
+
+        <!-- Footer -->
+        <footer class="hero-section text-white py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold">MAGANGIN</h5>
+                        <p>&copy; 2024 Platform Magang Digital AMIKOM. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap 5 JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Anime.js Animations -->
+        <script>
+            // Loading Animation
+            const loadingTimeline = anime.timeline({
+                autoplay: true
+            });
+
+            // Loading dots animation
+            loadingTimeline.add({
+                targets: '.loading-dot',
+                scale: [1, 1.5, 1],
+                opacity: [0.5, 1, 0.5],
+                duration: 800,
+                delay: anime.stagger(200),
+                loop: true,
+                easing: 'easeInOutQuad'
+            });
+
+            // Hide loading screen after 2.5 seconds
+            setTimeout(() => {
+                anime({
+                    targets: '#loadingScreen',
+                    opacity: 0,
+                    duration: 500,
+                    easing: 'easeOutQuad',
+                    complete: function() {
+                        document.getElementById('loadingScreen').style.display = 'none';
+                        
+                        // Show main content with fade in
+                        anime({
+                            targets: '#mainContent',
+                            opacity: [0, 1],
+                            translateY: [30, 0],
+                            duration: 800,
+                            easing: 'easeOutQuad'
+                        });
+
+                        // Animate hero section
+                        anime({
+                            targets: '.animate-hero',
+                            opacity: [0, 1],
+                            translateY: [50, 0],
+                            duration: 700,
+                            delay: 400,
+                            easing: 'easeOutQuad'
+                        });
+
+                        // Animate feature cards
+                        anime({
+                            targets: '.animate-feature',
+                            opacity: [0, 1],
+                            translateX: [-30, 0],
+                            duration: 600,
+                            delay: anime.stagger(150, {start: 800}),
+                            easing: 'easeOutQuad'
+                        });
+                    }
+                });
+            }, 2500);
+
+            // Page transition function for links
+            function pageTransition(url) {
+                anime({
+                    targets: 'body',
+                    opacity: 0,
+                    duration: 300,
+                    easing: 'easeOutQuad',
+                    complete: function() {
+                        window.location.href = url;
+                    }
+                });
+            }
+
+            // Update login link to use page transition
+            document.addEventListener('DOMContentLoaded', function() {
+                const loginLinks = document.querySelectorAll('a[href="login.html"]');
+                loginLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        pageTransition('login.html');
+                    });
+                });
+            });
+
+            // Add hover animations to feature cards
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    anime({
+                        targets: this,
+                        scale: 1.05,
+                        duration: 200,
+                        easing: 'easeOutQuad'
+                    });
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    anime({
+                        targets: this,
+                        scale: 1,
+                        duration: 200,
+                        easing: 'easeOutQuad'
+                    });
+                });
+            });
+
+            // Add scroll animations for images
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        anime({
+                            targets: entry.target,
+                            opacity: [0, 1],
+                            translateY: [30, 0],
+                            duration: 800,
+                            easing: 'easeOutQuad'
+                        });
+                    }
+                });
+            });
+
+            document.querySelectorAll('img').forEach(img => {
+                observer.observe(img);
+            });
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Magang - MAGANGIN</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        /* Animation Classes */
+        .animate-table {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .animate-header {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Main Styles */
+        .hero-section {
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+        }
+
+        .main-content {
+            background-color: #f5f5f5;
+            min-height: calc(100vh - 120px);
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .notification-icon {
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .custom-table {
+            margin-bottom: 0;
+        }
+
+        .custom-table th {
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 15px 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .custom-table td {
+            padding: 15px 12px;
+            vertical-align: middle;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #f8f9ff;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-diajukan {
+            background-color: #FEF3C7;
+            color: #D97706;
+        }
+
+        .status-dinilai {
+            background-color: #D1FAE5;
+            color: #059669;
+        }
+
+        .btn-action {
+            margin: 2px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+
+        .btn-edit {
+            background-color: #F59E0B;
+            color: white;
+            border: none;
+        }
+
+        .btn-edit:hover {
+            background-color: #D97706;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #EF4444;
+            color: white;
+            border: none;
+        }
+
+        .btn-delete:hover {
+            background-color: #DC2626;
+            color: white;
+        }
+
+        .btn-view {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+        }
+
+        .btn-view:hover {
+            background-color: #2563EB;
+            color: white;
+        }
+
+        .btn-add-report {
+            background: linear-gradient(135deg, #F59E0B 0%, #EAB308 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-add-report:hover {
+            background: linear-gradient(135deg, #D97706 0%, #CA8A04 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal-header {
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+            color: white;
+            border-bottom: none;
+        }
+
+        .modal-title {
+            font-weight: 600;
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-control:focus {
+            border-color: #7C3AED;
+            box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.25);
+        }        /* Responsive */
+        @media (max-width: 768px) {
+            .table-responsive {
+                font-size: 0.85rem;
+            }
+            
+            .btn-action {
+                padding: 4px 8px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Additional styles for table design */
+        .navbar-brand img {
+            height: 30px;
+        }
+
+        .table-design-purple {
+            height: 60px;
+            background-color: #7C3AED !important;
+            border: none !important;
+        }
+
+        .table-design-gray {
+            height: 60px;
+            background-color: #f8f9fa !important;
+            border: none !important;
+        }
+
+        .btn-submit-modal {
+            background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark hero-section sticky-lg-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="home.html"
+                onclick="pageTransition('home.html'); return false;">
+                <img src="assets/images/logo.png" alt="Logo" class="me-2 navbar-brand img">
+                MAGANGIN
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-white fw-bold" href="home.html"
+                            onclick="pageTransition('home.html'); return false;">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-white fw-bold" href="laporan-magang.html">
+                            Laporan Magang
+                        </a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-white fw-bold" href="#">
+                            Cetak Sertifikat
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <img src="assets/images/logo.png" alt="Profile" class="profile-img" onclick="pageTransition('login.html')">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container py-4">
+            <!-- Header Section -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h2 class="fw-bold mb-0 animate-header">Laporan Magang</h2>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-add-report animate-header" data-bs-toggle="modal" data-bs-target="#addReportModal">
+                        <i class="bi bi-plus-circle me-2"></i>Buat Laporan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="table-container animate-table">
+                <div class="table-responsive">
+                    <table class="table custom-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tanggal</th>
+                                <th>Waktu</th>
+                                <th>Rincian Kegiatan</th>
+                                <th>Bukti Kegiatan</th>
+                                <th>Detail & Nilai</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>01</strong></td>
+                                <td>2025-05-23</td>
+                                <td>13.20 WIB</td>
+                                <td>Merealisasikan Project</td>
+                                <td><a href="#" class="text-primary">Lihat dokumen</a></td>
+                                <td><a href="#" class="text-primary">Lihat detail & Nilai</a></td>
+                                <td><span class="status-badge status-diajukan">Diajukan</span></td>
+                                <td>
+                                    <button class="btn btn-action btn-edit">Edit</button>
+                                    <button class="btn btn-action btn-delete">Hapus</button>
+                                </td>
+                            </tr>
+                            <tr class="table-design-purple">
+                                <td class="table-design-purple"><strong>02</strong></td>
+                                <td class="table-design-purple">2025-05-23</td>
+                                <td class="table-design-purple">13.20 WIB</td>
+                                <td class="table-design-purple">Merealisasikan Project</td>
+                                <td class="table-design-purple"><a href="#" class="text-white">Lihat dokumen</a></td>
+                                <td class="table-design-purple"><a href="#" class="text-white">Lihat detail & Nilai</a></td>
+                                <td class="table-design-purple"><span class="status-badge status-dinilai">Telah Dinilai</span></td>
+                                <td class="table-design-purple">
+                                    <button class="btn btn-action btn-edit">Edit</button>
+                                    <button class="btn btn-action btn-delete">Hapus</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>03</strong></td>
+                                <td>2025-05-23</td>
+                                <td>13.20 WIB</td>
+                                <td>Merealisasikan Project</td>
+                                <td><a href="#" class="text-primary">Lihat dokumen</a></td>
+                                <td><a href="#" class="text-primary">Lihat detail & Nilai</a></td>
+                                <td><span class="status-badge status-diajukan">Diajukan</span></td>
+                                <td>
+                                    <button class="btn btn-action btn-edit">Edit</button>
+                                    <button class="btn btn-action btn-delete">Hapus</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-design-purple"><strong>04</strong></td>
+                                <td class="table-design-purple">2025-05-23</td>
+                                <td class="table-design-purple">13.20 WIB</td>
+                                <td class="table-design-purple">Merealisasikan Project</td>
+                                <td class="table-design-purple"><a href="#" class="text-white">Lihat dokumen</a></td>
+                                <td class="table-design-purple"><a href="#" class="text-white">Lihat detail & Nilai</a></td>
+                                <td class="table-design-purple"><span class="status-badge status-dinilai">Telah Dinilai</span></td>
+                                <td class="table-design-purple">
+                                    <button class="btn btn-action btn-edit">Edit</button>
+                                    <button class="btn btn-action btn-delete">Hapus</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Report Modal -->
+    <div class="modal fade" id="addReportModal" tabindex="-1" aria-labelledby="addReportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addReportModalLabel">
+                        <i class="bi bi-file-earmark-plus me-2"></i>Buat Laporan Magang
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reportForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="tanggal" class="form-label">Tanggal</label>
+                                <input type="date" class="form-control" id="tanggal" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="waktu" class="form-label">Waktu</label>
+                                <input type="time" class="form-control" id="waktu" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rincianKegiatan" class="form-label">Rincian Kegiatan</label>
+                            <textarea class="form-control" id="rincianKegiatan" rows="4" placeholder="Deskripsikan kegiatan magang yang telah dilakukan..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buktiKegiatan" class="form-label">Bukti Kegiatan</label>
+                            <input type="file" class="form-control" id="buktiKegiatan" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
+                            <div class="form-text">
+                                <i class="bi bi-info-circle me-1"></i>
+                                Format yang didukung: PDF, JPG, PNG, DOC, DOCX (Max: 5MB)
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="catatan" class="form-label">Catatan Tambahan</label>
+                            <textarea class="form-control" id="catatan" rows="3" placeholder="Catatan atau keterangan tambahan (opsional)"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-2"></i>Batal
+                    </button>
+                    <button type="button" class="btn btn-primary btn-submit-modal" onclick="submitReport()">
+                        <i class="bi bi-check-circle me-2"></i>Simpan Laporan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="hero-section text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="mb-1">Aplikasi ini khusus untuk mahasiswa aktif D3TI Universitas AMIKOM Yogyakarta.</p>
+                    <p class="mb-0">butuh bantuan? <a href="mailto:magangd3ti@amikom.ac.id"
+                            class="text-warning text-decoration-none">magangd3ti@amikom.ac.id</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Anime.js Animations -->
+    <script>
+        // Animate elements when page loads
+        anime({
+            targets: '.animate-header',
+            opacity: [0, 1],
+            translateX: [-30, 0],
+            duration: 600,
+            delay: anime.stagger(100),
+            easing: 'easeOutQuad'
+        });
+
+        anime({
+            targets: '.animate-table',
+            opacity: [0, 1],
+            translateY: [30, 0],
+            duration: 700,
+            delay: 300,
+            easing: 'easeOutQuad'
+        });
+
+        // Page transition function for links
+        function pageTransition(url) {
+            anime({
+                targets: 'body',
+                opacity: 0,
+                duration: 300,
+                easing: 'easeOutQuad',
+                complete: function() {
+                    window.location.href = url;
+                }
+            });
+        }
+
+        // Add hover animations to table rows
+        document.querySelectorAll('.custom-table tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                if (!this.querySelector('td').style.backgroundColor) {
+                    anime({
+                        targets: this,
+                        scale: 1.01,
+                        duration: 200,
+                        easing: 'easeOutQuad'
+                    });
+                }
+            });
+
+            row.addEventListener('mouseleave', function() {
+                if (!this.querySelector('td').style.backgroundColor) {
+                    anime({
+                        targets: this,
+                        scale: 1,
+                        duration: 200,
+                        easing: 'easeOutQuad'
+                    });
+                }
+            });
+        });
+
+        // Add hover animations to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                anime({
+                    targets: this,
+                    scale: 1.05,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+
+            button.addEventListener('mouseleave', function() {
+                anime({
+                    targets: this,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                anime({
+                    targets: this,
+                    scale: [1, 0.95, 1],
+                    duration: 150,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Form submission function
+        function submitReport() {
+            const form = document.getElementById('reportForm');
+            const formData = new FormData(form);
+            
+            // Basic validation
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Simulate form submission
+            const submitBtn = document.querySelector('.modal-footer .btn-primary');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Menyimpan...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addReportModal'));
+                modal.hide();
+                
+                // Reset form
+                form.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Show success message (you can replace this with actual success handling)
+                alert('Laporan berhasil disimpan!');
+                
+                // Here you would typically send the data to your server
+                console.log('Form data:', Object.fromEntries(formData));
+            }, 2000);
+        }
+
+        // Add notification hover animations
+        document.querySelectorAll('.notification-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                anime({
+                    targets: this,
+                    scale: 1.2,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+
+            icon.addEventListener('mouseleave', function() {
+                anime({
+                    targets: this,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
