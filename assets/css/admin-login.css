@@ -1,0 +1,49 @@
+/* Admin Login Specific Styles */
+
+.login-section {
+    background-color: #f5f5f5;
+    min-height: calc(100vh - 160px);
+}
+
+.admin-icon {
+    font-size: 3rem !important;
+}
+
+.admin-title {
+    color: #333;
+}
+
+.form-control-with-icon {
+    border-radius: 0 25px 25px 0;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.password-input {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.password-toggle {
+    border-radius: 0 25px 25px 0;
+    background-color: #f8f9fa;
+}
+
+.admin-login-btn {
+    background-color: #DC2626;
+    border-radius: 25px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.admin-contact-link {
+    color: #DC2626;
+}
+
+/* Fix backdrop-filter for Safari support */
+.feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}

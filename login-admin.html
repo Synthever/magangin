@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAGANGIN - Platform Magang Digital</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Anime.js CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        /* Animation Classes */
+        .animate-form {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .gradient-purple {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+        }
+
+        .gradient-orange {
+            background: linear-gradient(135deg, #F59E0B 0%, #EAB308 100%);
+        }
+
+        .navbar-brand img {
+            height: 30px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .login-card {
+            border-radius: 20px;
+        }
+
+        .form-control:focus {
+            border-color: #F59E0B;
+            box-shadow: 0 0 0 0.2rem rgba(245, 158, 11, 0.25);
+        }
+
+        .btn-google:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-1px);
+        }
+
+        .btn-login:hover {
+            background-color: #d97706;
+            transform: translateY(-1px);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Custom color theme */
+        .navbar-admin {
+            background-color: #F59E0B !important;
+        }
+
+        .login-section {
+            background-color: #f5f5f5;
+            min-height: calc(100vh - 160px);
+        }
+
+        .welcome-title {
+            color: #333;
+        }
+
+        .login-form-card {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+        }
+
+        .google-btn {
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input {
+            border-radius: 25px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+
+        .login-btn {
+            background-color: #F59E0B;
+            border-radius: 25px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link {
+            color: #F59E0B;
+        }
+
+        /* Hover effects */
+        .login-btn:hover {
+            background-color: #d97706 !important;
+        }
+
+        .contact-link:hover {
+            color: #d97706;
+        }
+    </style>
+</head>
+
+<body> <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-lg-top navbar-admin">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                <img src="assets/images/logo.png" alt="Logo" class="me-2">
+                MAGANGIN
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-white fw-bold" href="index.html">
+                            HOME
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold active" href="login-admin.html">
+                            LOGIN
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="py-5 login-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold welcome-title">Selamat Datang di Magangin</h2>
+                        <p class="text-muted">Portal resmi admin magang untuk Mahasiswa D3TI AMIKOM.</p>
+                    </div> <!-- Login Form Card -->
+                    <div class="card shadow-lg border-0 login-card animate-form login-form-card">
+                        <div class="card-body p-4">
+                            <!-- Google Login Button --> <button
+                                class="btn btn-light w-100 mb-4 py-2 fw-bold btn-google google-btn">
+                                <i class="bi bi-google me-2"></i>
+                                Lanjutkan dengan akun google
+                            </button>
+
+                            <!-- Login Form -->
+                            <form>
+                                <div class="mb-3">
+                                    <label for="nik" class="form-label text-white fw-bold">NIK</label> <input
+                                        type="text" class="form-control py-2 form-input" id="nik"
+                                        placeholder="Masukkan NIK aktif kamu">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="password" class="form-label text-white fw-bold">Password</label> <input
+                                        type="password" class="form-control py-2 form-input" id="password"
+                                        placeholder="Gunakan password amikom">
+                                </div>
+
+                                <!-- Login Button --> <button type="button"
+                                    class="btn w-100 py-2 fw-bold text-dark mb-3 btn-login login-btn"
+                                    onclick="pageTransition('home-admin.html')">
+                                    MASUK
+                                </button>
+
+                                <!-- Forgot Password Link -->
+                                <div class="text-center">
+                                    <span class="text-white">Lupa password? </span>
+                                    <a href="#" class="text-warning fw-bold text-decoration-none">Hubungi admin
+                                        DAAK</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Footer Info -->
+                    <div class="text-center mt-4">
+                        <p class="text-muted mb-1">Portal login untuk admin Magangin</p>
+                        <p class="text-muted">butuh bantuan? <a href="mailto:magangd3ti@amikom.ac.id"
+                                class="text-decoration-none contact-link">admin@amikom.ac.id</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="hero-section text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold">MAGANGIN</h5>
+                    <p>&copy; 2024 Platform Magang Digital AMIKOM. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Anime.js Animations -->
+    <script>
+        // Page ready animations
+        document.addEventListener('DOMContentLoaded', function () {
+            // Animate login form on page load
+            anime({
+                targets: '.animate-form',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 700,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        // Page transition function for links
+        function pageTransition(url) {
+            anime({
+                targets: 'body',
+                opacity: 0,
+                duration: 300,
+                easing: 'easeOutQuad',
+                complete: function () {
+                    window.location.href = url;
+                }
+            });
+        }
+
+        // Add hover animations to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function () {
+                anime({
+                    targets: this,
+                    scale: 1.05,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+
+            button.addEventListener('mouseleave', function () {
+                anime({
+                    targets: this,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function () {
+                anime({
+                    targets: this,
+                    scale: [1, 0.95, 1],
+                    duration: 150,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Form input focus animations
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('focus', function () {
+                anime({
+                    targets: this.parentElement,
+                    scale: 1.02,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+
+            input.addEventListener('blur', function () {
+                anime({
+                    targets: this.parentElement,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
