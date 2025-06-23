@@ -75,9 +75,7 @@
 
         .custom-table {
             margin-bottom: 0;
-        }
-
-        .custom-table th {
+        }        .custom-table th {
             background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
             color: white;
             font-weight: 600;
@@ -85,6 +83,15 @@
             padding: 15px 12px;
             text-align: center;
             vertical-align: middle;
+        }
+
+        .sortable {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sortable:hover {
+            background-color: rgba(255,255,255,0.1);
         }
 
         .custom-table td {
@@ -222,11 +229,28 @@
             height: 60px;
             background-color: #f8f9fa !important;
             border: none !important;
-        }
-
-        .btn-submit-modal {
+        }        .btn-submit-modal {
             background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
             border: none;
+        }
+
+        /* Search and Filter Styles */
+        .search-input-group {
+            width: 300px;
+        }
+
+        .status-filter {
+            width: 200px;
+        }
+
+        .form-control:focus {
+            border-color: #7C3AED;
+            box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.25);
+        }
+
+        .form-select:focus {
+            border-color: #7C3AED;
+            box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.25);
         }
     </style>
 </head>
@@ -248,7 +272,7 @@
                     <li class="nav-item me-3">
                         <a class="nav-link text-white fw-bold" href="home.html"
                             onclick="pageTransition('home.html'); return false;">
-                            Home
+                            Beranda
                         </a>
                     </li>
                     <li class="nav-item me-3">
@@ -257,7 +281,7 @@
                         </a>
                     </li>
                     <li class="nav-item me-3">
-                        <a class="nav-link text-white fw-bold" href="info-lamaran.html#cetak-sertifikat">
+                        <a class="nav-link text-white fw-bold" href="info-lamaran.html">
                             Cetak Sertifikat
                         </a>
                     </li>
@@ -282,30 +306,54 @@
                         <i class="bi bi-plus-circle me-2"></i>Buat Laporan
                     </button>
                 </div>
-            </div>
-
-            <!-- Table Section -->
+            </div>            <!-- Table Section -->
             <div class="table-container animate-table">
+                <div class="d-flex justify-content-between align-items-center mb-4 p-3">
+                    <h4 class="fw-bold mb-0">Daftar Laporan Magang</h4>
+                    <div class="d-flex gap-3">                        <div class="input-group search-input-group">
+                            <span class="input-group-text bg-white">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input type="text" class="form-control" id="searchInput" placeholder="Cari laporan...">
+                        </div>
+                        <select class="form-select status-filter" id="statusFilter" title="Filter berdasarkan status">
+                            <option value="">Semua Status</option>
+                            <option value="diajukan">Diajukan</option>
+                            <option value="dinilai">Telah Dinilai</option>
+                        </select>
+                    </div>
+                </div>
+                
                 <div class="table-responsive">
-                    <table class="table custom-table">
+                    <table class="table custom-table" id="reportTable">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Tanggal</th>
-                                <th>Waktu</th>
-                                <th>Rincian Kegiatan</th>
+                                <th class="sortable" data-sort="id">
+                                    ID <i class="bi bi-arrow-down-up ms-1"></i>
+                                </th>
+                                <th class="sortable" data-sort="date">
+                                    Tanggal <i class="bi bi-arrow-down-up ms-1"></i>
+                                </th>
+                                <th class="sortable" data-sort="time">
+                                    Waktu <i class="bi bi-arrow-down-up ms-1"></i>
+                                </th>
+                                <th class="sortable" data-sort="activity">
+                                    Rincian Kegiatan <i class="bi bi-arrow-down-up ms-1"></i>
+                                </th>
                                 <th>Bukti Kegiatan</th>
                                 <th>Detail & Nilai</th>
-                                <th>Status</th>
+                                <th class="sortable" data-sort="status">
+                                    Status <i class="bi bi-arrow-down-up ms-1"></i>
+                                </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="tableBody">
+                            <tr data-status="diajukan">
                                 <td><strong>01</strong></td>
                                 <td>2025-05-23</td>
                                 <td>13.20 WIB</td>
-                                <td>Merealisasikan Project</td>
+                                <td>Merealisasikan Project Website</td>
                                 <td><a href="#" class="text-primary">Lihat dokumen</a></td>
                                 <td><a href="#" class="text-primary">Lihat detail & Nilai</a></td>
                                 <td><span class="status-badge status-diajukan">Diajukan</span></td>
@@ -314,24 +362,23 @@
                                     <button class="btn btn-action btn-delete">Hapus</button>
                                 </td>
                             </tr>
-                            <tr class="table-design-purple">
-                                <td class="table-design-purple"><strong>02</strong></td>
-                                <td class="table-design-purple">2025-05-23</td>
-                                <td class="table-design-purple">13.20 WIB</td>
-                                <td class="table-design-purple">Merealisasikan Project</td>
-                                <td class="table-design-purple"><a href="#" class="text-white">Lihat dokumen</a></td>
-                                <td class="table-design-purple"><a href="#" class="text-white">Lihat detail & Nilai</a></td>
-                                <td class="table-design-purple"><span class="status-badge status-dinilai">Telah Dinilai</span></td>
-                                <td class="table-design-purple">
-                                    <button class="btn btn-action btn-edit">Edit</button>
-                                    <button class="btn btn-action btn-delete">Hapus</button>
+                            <tr data-status="dinilai">
+                                <td><strong>02</strong></td>
+                                <td>2025-05-24</td>
+                                <td>09.15 WIB</td>
+                                <td>Debugging dan Testing Aplikasi</td>
+                                <td><a href="#" class="text-primary">Lihat dokumen</a></td>
+                                <td><a href="#" class="text-primary">Lihat detail & Nilai</a></td>
+                                <td><span class="status-badge status-dinilai">Telah Dinilai</span></td>
+                                <td>
+                                    <button class="btn btn-action btn-view">Lihat</button>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr data-status="diajukan">
                                 <td><strong>03</strong></td>
-                                <td>2025-05-23</td>
-                                <td>13.20 WIB</td>
-                                <td>Merealisasikan Project</td>
+                                <td>2025-05-25</td>
+                                <td>14.30 WIB</td>
+                                <td>Dokumentasi API dan Database</td>
                                 <td><a href="#" class="text-primary">Lihat dokumen</a></td>
                                 <td><a href="#" class="text-primary">Lihat detail & Nilai</a></td>
                                 <td><span class="status-badge status-diajukan">Diajukan</span></td>
@@ -340,21 +387,56 @@
                                     <button class="btn btn-action btn-delete">Hapus</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="table-design-purple"><strong>04</strong></td>
-                                <td class="table-design-purple">2025-05-23</td>
-                                <td class="table-design-purple">13.20 WIB</td>
-                                <td class="table-design-purple">Merealisasikan Project</td>
-                                <td class="table-design-purple"><a href="#" class="text-white">Lihat dokumen</a></td>
-                                <td class="table-design-purple"><a href="#" class="text-white">Lihat detail & Nilai</a></td>
-                                <td class="table-design-purple"><span class="status-badge status-dinilai">Telah Dinilai</span></td>
-                                <td class="table-design-purple">
+                            <tr data-status="dinilai">
+                                <td><strong>04</strong></td>
+                                <td>2025-05-26</td>
+                                <td>10.00 WIB</td>
+                                <td>Meeting dengan Client</td>
+                                <td><a href="#" class="text-primary">Lihat dokumen</a></td>
+                                <td><a href="#" class="text-primary">Lihat detail & Nilai</a></td>
+                                <td><span class="status-badge status-dinilai">Telah Dinilai</span></td>
+                                <td>
+                                    <button class="btn btn-action btn-view">Lihat</button>
+                                </td>
+                            </tr>
+                            <tr data-status="diajukan">
+                                <td><strong>05</strong></td>
+                                <td>2025-05-27</td>
+                                <td>15.45 WIB</td>
+                                <td>Implementasi Fitur Payment Gateway</td>
+                                <td><a href="#" class="text-primary">Lihat dokumen</a></td>
+                                <td><a href="#" class="text-primary">Lihat detail & Nilai</a></td>
+                                <td><span class="status-badge status-diajukan">Diajukan</span></td>
+                                <td>
                                     <button class="btn btn-action btn-edit">Edit</button>
                                     <button class="btn btn-action btn-delete">Hapus</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-between align-items-center mt-4 p-3">
+                    <div class="text-muted">
+                        Menampilkan 1-5 dari 5 laporan
+                    </div>
+                    <nav aria-label="Table pagination">
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item disabled">
+                                <span class="page-link">Previous</span>
+                            </li>
+                            <li class="page-item active">
+                                <span class="page-link">1</span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -518,9 +600,7 @@
                     easing: 'easeOutQuad'
                 });
             });
-        });
-
-        // Form submission function
+        });        // Form submission function
         function submitReport() {
             const form = document.getElementById('reportForm');
             const formData = new FormData(form);
@@ -557,6 +637,93 @@
                 console.log('Form data:', Object.fromEntries(formData));
             }, 2000);
         }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const tableRows = document.querySelectorAll('#tableBody tr');
+            
+            tableRows.forEach(row => {
+                const id = row.cells[0].textContent.toLowerCase();
+                const date = row.cells[1].textContent.toLowerCase();
+                const activity = row.cells[3].textContent.toLowerCase();
+                
+                if (id.includes(searchTerm) || date.includes(searchTerm) || activity.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Status filter functionality
+        document.getElementById('statusFilter').addEventListener('change', function() {
+            const filterValue = this.value;
+            const tableRows = document.querySelectorAll('#tableBody tr');
+            
+            tableRows.forEach(row => {
+                const status = row.getAttribute('data-status');
+                
+                if (filterValue === '' || status === filterValue) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Table sorting functionality
+        let sortDirection = {};
+        
+        document.querySelectorAll('.sortable').forEach(header => {
+            header.addEventListener('click', function() {
+                const sortKey = this.getAttribute('data-sort');
+                const columnIndex = Array.from(this.parentNode.children).indexOf(this);
+                
+                // Toggle sort direction
+                sortDirection[sortKey] = sortDirection[sortKey] === 'asc' ? 'desc' : 'asc';
+                
+                // Get table rows
+                const tableBody = document.getElementById('tableBody');
+                const rows = Array.from(tableBody.querySelectorAll('tr'));
+                
+                // Sort rows
+                rows.sort((a, b) => {
+                    let aValue = a.cells[columnIndex].textContent.trim();
+                    let bValue = b.cells[columnIndex].textContent.trim();
+                    
+                    // Handle different data types
+                    if (sortKey === 'id') {
+                        aValue = parseInt(aValue);
+                        bValue = parseInt(bValue);
+                    } else if (sortKey === 'date') {
+                        aValue = new Date(aValue);
+                        bValue = new Date(bValue);
+                    }
+                    
+                    if (sortDirection[sortKey] === 'asc') {
+                        return aValue > bValue ? 1 : -1;
+                    } else {
+                        return aValue < bValue ? 1 : -1;
+                    }
+                });
+                
+                // Re-append sorted rows
+                rows.forEach(row => tableBody.appendChild(row));
+                
+                // Update sort indicators
+                document.querySelectorAll('.sortable i').forEach(icon => {
+                    icon.className = 'bi bi-arrow-down-up ms-1';
+                });
+                
+                const currentIcon = this.querySelector('i');
+                if (sortDirection[sortKey] === 'asc') {
+                    currentIcon.className = 'bi bi-arrow-up ms-1';
+                } else {
+                    currentIcon.className = 'bi bi-arrow-down ms-1';
+                }
+            });
+        });
 
         // Add notification hover animations
         document.querySelectorAll('.notification-icon').forEach(icon => {

@@ -9,7 +9,8 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">    <!-- Anime.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Anime.js CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
         /* Animation Classes */
@@ -28,8 +29,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .gradient-purple {
@@ -57,7 +65,9 @@
         .section-title {
             font-weight: 700;
             font-size: 2rem;
-        }        .card-hover:hover {
+        }
+
+        .card-hover:hover {
             transform: translateY(-5px);
             transition: all 0.3s ease;
         }
@@ -79,7 +89,9 @@
         .btn-login:hover {
             background-color: #d97706;
             transform: translateY(-1px);
-        }        body {
+        }
+
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -177,7 +189,7 @@
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item me-3">
                         <a class="nav-link text-white fw-bold" href="home.html">
-                            Home
+                            Beranda
                         </a>
                     </li>
                     <li class="nav-item me-3">
@@ -186,12 +198,13 @@
                         </a>
                     </li>
                     <li class="nav-item me-3">
-                        <a class="nav-link text-white fw-bold" href="cetak-sertifikat.html">
+                        <a class="nav-link text-white fw-bold" href="info-lamaran.html">
                             Cetak Sertifikat
                         </a>
                     </li>
                     <li class="nav-item">
-                        <img src="assets/images/logo.png" alt="Profile" class="profile-img" onclick="pageTransition('login.html')">
+                        <img src="assets/images/logo.png" alt="Profile" class="profile-img"
+                            onclick="pageTransition('login.html')">
                     </li>
                 </ul>
             </div>
@@ -210,18 +223,18 @@
                 </div>
                 <div class="col-md-4 text-end ms-auto">
                     <div class="d-flex justify-content-end gap-2">
-                        <a class="btn btn-outline-secondary btn-sm" href="info-lamaran.html">
+                        <a class="btn btn-outline-secondary btn-sm" href="laporan-magang.html">
                             <i class="bi bi-bell"></i>
                         </a>
-                        <a class="btn btn-outline-secondary btn-sm" href="#">
+                        <a class="btn btn-outline-secondary btn-sm" href="info-lamaran.html">
                             <i class="bi bi-chat-dots"></i>
                         </a>
-                        <a class="btn btn-outline-secondary btn-sm" href="laporan-magang.html">
+                        <a class="btn btn-outline-secondary btn-sm" href="info-lamaran.html">
                             <i class="bi bi-calendar"></i>
                         </a>
                     </div>
                 </div>
-            </div>            <!-- Status Cards -->
+            </div> <!-- Status Cards -->
             <div class="row mb-5">
                 <div class="col-md-6 col-lg-3">
                     <div class="status-card animate-stagger">
@@ -274,7 +287,8 @@
                                     <span class="input-group-text bg-white border-end-0">
                                         <i class="bi bi-search text-muted"></i>
                                     </span>
-                                    <input type="text" class="form-control border-start-0" placeholder="Cari Nama Pekerjaan, Skill, dan Perusahaan">
+                                    <input type="text" class="form-control border-start-0"
+                                        placeholder="Cari Nama Pekerjaan, Skill, dan Perusahaan">
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
@@ -282,7 +296,8 @@
                                     <span class="input-group-text bg-white border-end-0">
                                         <i class="bi bi-geo-alt text-muted"></i>
                                     </span>
-                                    <input type="text" class="form-control border-start-0" placeholder="Kota Yogyakarta">
+                                    <input type="text" class="form-control border-start-0"
+                                        placeholder="Kota Yogyakarta">
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
@@ -298,7 +313,7 @@
 
         <!-- Internship Cards -->
         <div class="container py-5">
-            <div class="row">                <!-- Card 1 -->
+            <div class="row"> <!-- Card 1 -->
                 <div class="col-md-6 col-lg-4" onclick="window.location.href='detail.html'">
                     <div class="internship-card animate-card">
                         <div class="d-flex align-items-start mb-3">
@@ -506,7 +521,8 @@
                         </div>
                         <p class="small text-light mt-2 mb-0">8 Jam Yang lalu</p>
                     </div>
-                </div>            </div>
+                </div>
+            </div>
         </div>
     </div>
     </div> <!-- End Main Content Wrapper -->
@@ -517,7 +533,8 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <p class="mb-1">Aplikasi ini khusus untuk mahasiswa aktif D3TI Universitas AMIKOM Yogyakarta.</p>
-                    <p class="mb-0">butuh bantuan? <a href="mailto:magangd3ti@amikom.ac.id" class="text-warning text-decoration-none">magangd3ti@amikom.ac.id</a></p>
+                    <p class="mb-0">butuh bantuan? <a href="mailto:magangd3ti@amikom.ac.id"
+                            class="text-warning text-decoration-none">magangd3ti@amikom.ac.id</a></p>
                 </div>
             </div>
         </div>
@@ -525,7 +542,7 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- Anime.js Animations -->
+    <!-- Anime.js Animations -->
     <script>
         // Animate status cards when page loads
         anime({
@@ -543,12 +560,12 @@
             opacity: [0, 1],
             translateY: [50, 0],
             duration: 700,
-            delay: anime.stagger(150, {start: 300}),
+            delay: anime.stagger(150, { start: 300 }),
             easing: 'easeOutQuad'
         });        // Animate progress bars when page loads
         anime({
             targets: '.progress-bar-custom',
-            width: function(el) {
+            width: function (el) {
                 return el.style.width;
             },
             duration: 1000,
@@ -563,7 +580,7 @@
                 opacity: 0,
                 duration: 300,
                 easing: 'easeOutQuad',
-                complete: function() {
+                complete: function () {
                     window.location.href = url;
                 }
             });
@@ -571,7 +588,7 @@
 
         // Add hover animations to cards
         document.querySelectorAll('.internship-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 anime({
                     targets: this,
                     scale: 1.02,
@@ -580,7 +597,7 @@
                 });
             });
 
-            card.addEventListener('mouseleave', function() {
+            card.addEventListener('mouseleave', function () {
                 anime({
                     targets: this,
                     scale: 1,
@@ -592,7 +609,7 @@
 
         // Add click animation to buttons
         document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 anime({
                     targets: this,
                     scale: [1, 0.95, 1],
